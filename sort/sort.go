@@ -3,6 +3,31 @@ package mySort
 type cmpFunc func(interface{}, interface{}) int
 
 func partition(data []interface{}, left, right int, cmp cmpFunc) int {
+	pivot := data[left]
+	i, j := left, right
+
+	for i < j {
+		for i < j && cmp(pivot, data[j]) < 0 {
+			j--
+		}
+		if i < j {
+			data[i] = data[j]
+			i++
+		}
+
+		for i < j && cmp(data[i], pivot) < 0 {
+			i++
+		}
+		if i < j {
+			data[j] = data[i]
+			j--
+		}
+	}
+	data[i] = pivot
+	return i
+}
+
+func partition2(data []interface{}, left, right int, cmp cmpFunc) int {
 	pivot := left
 	index := pivot + 1
 
