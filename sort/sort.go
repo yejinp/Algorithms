@@ -2,8 +2,31 @@ package mySort
 
 type cmpFunc func(interface{}, interface{}) int
 
-func QuickSort(slice []interface{}, cmp cmpFunc) {
+func partition(data []interface{}, left, right int, cmp cmpFunc) int {
+	pivot := left
+	index := pivot + 1
 
+	for i := index; i <= right; i++ {
+		if cmp(data[i], data[pivot]) < 0 {
+			data[i], data[index] = data[index], data[i]
+			index += 1
+		}
+	}
+	data[pivot], data[index-1] = data[index-1], data[pivot]
+	return index - 1
+}
+
+func qSort(data []interface{}, start, end int, cmp cmpFunc) {
+	if start >= end {
+		return
+	}
+	p := partition(data, start, end, cmp)
+	qSort(data, start, p-1, cmp)
+	qSort(data, p+1, end, cmp)
+}
+
+func QuickSort(data []interface{}, cmp cmpFunc) {
+	qSort(data, 0, len(data)-1, cmp)
 }
 
 func InsertionSort(slice []interface{}, cmp cmpFunc) {
@@ -75,5 +98,9 @@ func SelectSort(slice []interface{}, cmp cmpFunc) {
 }
 
 func ShellSort(slice []interface{}, cmp cmpFunc) {
+
+}
+
+func HeapSort(slice []interface{}, cmp cmpFunc) {
 
 }
