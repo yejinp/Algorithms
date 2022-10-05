@@ -10,30 +10,29 @@ func InsertionSort(slice []interface{}, cmp cmpFunc) {
 
 }
 
-func merge1(data []interface{}, left, mid, right int, cmp cmpFunc) {
+func merge(data []interface{}, left, mid, right int, cmp cmpFunc) {
 	help := make([]interface{}, right-left+1)
-	i, middle := 0, mid+1
-	for left <= mid && middle <= right {
-		//	fmt.Println(left, middle, mid, right, data[left], data[middle])
-		if cmp(data[left], data[middle]) < 0 {
-			help[i] = data[left]
-			left++
+	sleft, sright, i := left, mid+1, 0
+
+	for ; sleft <= mid && sright <= right; i++ {
+		if cmp(data[sleft], data[sright]) < 0 {
+			help[i] = data[sleft]
+			sleft++
 		} else {
-			help[i] = data[middle]
-			middle++
+			help[i] = data[sright]
+			sright++
 		}
-		i++
 	}
 
-	if left <= mid {
-		copy(help[i:], data[left:])
+	if sleft <= mid {
+		copy(help[i:], data[sleft:])
 	} else {
-		copy(help[i:], data[middle:])
+		copy(help[i:], data[sright:])
 	}
 	copy(data[left:], help)
 }
 
-func merge(data []interface{}, left, mid, right int, cmp cmpFunc) {
+func merge2(data []interface{}, left, mid, right int, cmp cmpFunc) {
 	help := make([]interface{}, len(data))
 	copy(help, data)
 
