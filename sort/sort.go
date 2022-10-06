@@ -54,10 +54,6 @@ func QuickSort(data []interface{}, cmp cmpFunc) {
 	qSort(data, 0, len(data)-1, cmp)
 }
 
-func InsertionSort(slice []interface{}, cmp cmpFunc) {
-
-}
-
 func merge(data []interface{}, left, mid, right int, cmp cmpFunc) {
 	help := make([]interface{}, right-left+1)
 	sleft, sright, i := left, mid+1, 0
@@ -116,14 +112,6 @@ func mSort(data []interface{}, left, right int, cmp cmpFunc) {
 
 func MergeSort(data []interface{}, cmp cmpFunc) {
 	mSort(data, 0, len(data)-1, cmp)
-}
-
-func SelectSort(slice []interface{}, cmp cmpFunc) {
-
-}
-
-func ShellSort(slice []interface{}, cmp cmpFunc) {
-
 }
 
 func maxHeapify(data []interface{}, i int, cmp cmpFunc) {
