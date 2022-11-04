@@ -28,6 +28,7 @@ func TestBottomUpCutRod(t *testing.T) {
 		want  int
 	}{
 		{[]int{18, 90}, 90},
+		{[]int{1}, 1},
 		{[]int{1, 5}, 5},
 		{[]int{1, 5, 8}, 8},
 		{[]int{1, 5, 8, 9}, 10},
