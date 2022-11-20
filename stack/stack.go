@@ -29,8 +29,9 @@ func (s *Stack) Push(x interface{}) error {
 	if s.top == s.size {
 		return errors.New("overflow")
 	}
-	s.top++
+
 	s.dat[s.top] = x
+	s.top++
 	return nil
 }
 
@@ -40,4 +41,8 @@ func (s *Stack) Pop() (error, interface{}) {
 	}
 	s.top = s.top - 1
 	return nil, s.dat[s.top]
+}
+
+func (s *Stack) Size() int {
+	return s.size
 }
