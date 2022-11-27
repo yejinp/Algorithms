@@ -76,7 +76,7 @@ func TestLcsLength1(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		got := lcsLength1(test.X, test.Y)
+		got := GetLcsOnlyLength(test.X, test.Y)
 		if got != test.want {
 			t.Errorf("lcsLength(%v,%v) got %v, want:%v",
 				test.X, test.Y, got, test.want)

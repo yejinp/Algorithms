@@ -32,7 +32,7 @@ func lcsLength(x, y string) int {
 	return c[lx][ly]
 }
 
-func lcsLength1(x, y string) int {
+func GetLcsOnlyLength(x, y string) int {
 	lx, ly := len(x), len(y)
 	c1, c2 := make([]int, ly+1), make([]int, ly+1)
 
