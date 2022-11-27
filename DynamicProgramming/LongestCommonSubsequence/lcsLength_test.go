@@ -47,3 +47,23 @@ func TestLcsLength(t *testing.T) {
 		}
 	}
 }
+
+func TestLcsLength1(t *testing.T) {
+	tests := []struct {
+		X    string
+		Y    string
+		want int
+	}{
+		{"ABCD", "ACBD", 3},
+		{"ABCBDAB", "BDCABA", 4},
+		{"ACCGGTCGAGTGCGCGGAAGCCGGCCGAA", "GTCGTTCGGAATGCCGTTGCTCTGTAAA", 20},
+	}
+
+	for _, test := range tests {
+		got := lcsLength1(test.X, test.Y)
+		if got != test.want {
+			t.Errorf("lcsLength(%v,%v) got %v, want:%v",
+				test.X, test.Y, got, test.want)
+		}
+	}
+}

@@ -28,8 +28,28 @@ func lcsLength(x, y string) int {
 			}
 		}
 	}
-	//	fmt.Println(c[lx][ly])
+
 	return c[lx][ly]
+}
+
+func lcsLength1(x, y string) int {
+	lx, ly := len(x), len(y)
+	c1, c2 := make([]int, lx+1), make([]int, lx+1)
+
+	for i := 0; i < lx; i++ {
+		for j := 0; j < ly; j++ {
+			if x[i] == y[j] {
+				c2[j+1] = c1[j] + 1
+			} else if c2[j] >= c1[j+1] {
+				c2[j+1] = c2[j]
+			} else {
+				c2[j+1] = c1[j+1]
+			}
+		}
+		c1, c2 = c2, c1
+
+	}
+	return c1[ly]
 }
 
 func printLCS(b [][]byte, X string) {
