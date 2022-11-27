@@ -34,7 +34,7 @@ func lcsLength(x, y string) int {
 
 func lcsLength1(x, y string) int {
 	lx, ly := len(x), len(y)
-	c1, c2 := make([]int, lx+1), make([]int, lx+1)
+	c1, c2 := make([]int, ly+1), make([]int, ly+1)
 
 	for i := 0; i < lx; i++ {
 		for j := 0; j < ly; j++ {
