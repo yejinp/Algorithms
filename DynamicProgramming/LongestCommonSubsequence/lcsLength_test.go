@@ -34,8 +34,16 @@ func TestLcsLength(t *testing.T) {
 		Y    string
 		want int
 	}{
+		{"B", "B", 1},
+		{"B", "BA", 1},
+		{"BA", "BA", 2},
+		{"BAB", "BA", 2},
+		{"BA", "BAB", 2},
+		{"ABCD", "AD", 2},
 		{"ABCD", "ACBD", 3},
-		{"BDCABA", "ABCBDAB", 4},
+		{"ABCD", "ACBD", 3},
+		{"ABCD", "ABCD", 4},
+		{"ABCBDAB", "BDCABA", 4},
 		{"ACCGGTCGAGTGCGCGGAAGCCGGCCGAA", "GTCGTTCGGAATGCCGTTGCTCTGTAAA", 20},
 	}
 
